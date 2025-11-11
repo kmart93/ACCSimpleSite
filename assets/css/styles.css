@@ -32,7 +32,7 @@ a:focus {
 
 .hero {
   min-height: 70vh;
-  background: linear-gradient(rgba(10, 104, 151, 0.8), rgba(16, 99, 65, 0.8)),
+  background: linear-gradient(rgba(10, 104, 151, 0.8), rgba(88, 133, 246, 0.8)),
     url('ardmorebackground.jpg') center / cover;
   color: white;
   display: flex;
@@ -82,7 +82,9 @@ a:focus {
 
 .hero__content {
   padding: 6rem 5vw 4rem;
-  max-width: 600px;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero__content h1 {
