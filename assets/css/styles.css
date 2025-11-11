@@ -33,7 +33,7 @@ a:focus {
 .hero {
   min-height: 70vh;
   background: linear-gradient(rgba(10, 104, 151, 0.8), rgba(16, 99, 65, 0.8)),
-    url('https://www.crowdfunder.co.uk/uploads/projects/1337270.jpg?1670515869') center / cover;
+    url('ardmorebackground.jpg') center / cover;
   color: white;
   display: flex;
   flex-direction: column;
