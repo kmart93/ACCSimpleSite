@@ -66,6 +66,11 @@
         el.style.maxWidth = '540px';
         el.style.width = '100%';
         el.style.margin = '0 auto';
+        // Ensure permalink has trailing slash, as some mobile agents require it
+        const attr = el.getAttribute('data-instgrm-permalink');
+        if (attr && !/\/$/.test(attr)) {
+          el.setAttribute('data-instgrm-permalink', attr + '/');
+        }
       } catch (_) {}
     });
     const ig = document.createElement('script');
@@ -74,6 +79,10 @@
     ig.onload = () => {
       if (window.instgrm && window.instgrm.Embeds) {
         window.instgrm.Embeds.process();
+        // Retry once after a short delay for mobile Safari
+        setTimeout(() => {
+          try { window.instgrm.Embeds.process(); } catch (_) {}
+        }, 500);
       }
     };
     document.body.appendChild(ig);
