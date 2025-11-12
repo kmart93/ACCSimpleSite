@@ -233,12 +233,18 @@ a:focus {
 }
 
 .news__grid blockquote {
-  max-height: 700px;
-  overflow: hidden;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  max-height: none;
+  overflow: visible;
 }
 
-.news__grid iframe {
-  height: 700px;
+.news__grid .fb-embed {
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 400px; /* reduce CLS while loading */
 }
 
 @media (max-width: 1024px) {
@@ -246,12 +252,7 @@ a:focus {
     flex-direction: column;
     align-items: center;
   }
-  
-  .news__grid blockquote,
-  .news__grid iframe {
-    max-height: none;
-    height: auto;
-  }
+
 }
 
 .form {
