@@ -1,5 +1,5 @@
 :root {
-  --green: #106341;
+  --lightblue: #0f78d9;
   --gold: #f2c14e;
   --navy: #0b1c2c;
   --light: #f5f7fa;
@@ -154,7 +154,7 @@ a:focus {
 .card h3 {
   margin-top: 0;
   font-family: var(--font-heading);
-  color: var(--green);
+  color: var(--lightblue);
 }
 
 .card__note {
@@ -284,7 +284,42 @@ a:focus {
   font-weight: 600;
 }
 
+.contact__grid {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.contact__info {
+  flex: 1 1 60%;
+}
+
+.contact__images {
+  flex: 0 0 320px; /* width of the image column on desktop */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__images img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* stack on smaller screens */
 @media (max-width: 860px) {
+  .contact__grid {
+    flex-direction: column;
+  }
+  .contact__images {
+    flex-basis: auto;
+    width: 100%;
+  }
   .nav__toggle {
     display: inline-block;
   }
