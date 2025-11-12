@@ -2,18 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Ardmore Cricket Club in Ardmore, Co. Derry — welcoming players, supporters and families to the Bleachgreen." />
+  <meta name="theme-color" content="#0b1c2c" />
+  <meta property="og:title" content="Ardmore Cricket Club" />
+  <meta property="og:description" content="Welcoming players, supporters and families to the Bleachgreen, Ardmore, Co. Derry." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/ardmorebadge.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>Ardmore Cricket Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/images/ardmorebackground.jpg" />
+  <link rel="icon" href="assets/images/ardmorebadge.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/images/ardmorebadge.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#about">Skip to main content</a>
   <header class="hero" id="top">
     <nav class="nav">
-      <img class="nav__brand" src="assets/images/ardmorebadge.png" alt="Ardmore Cricket Club" />
-      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <a href="#top" aria-label="Home">
+        <img class="nav__brand" src="assets/images/ardmorebadge.png" alt="Ardmore Cricket Club" decoding="async" />
+      </a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">Menu</button>
       <ul class="nav__links" id="nav-menu">
         <li><a href="#about">About</a></li>
         <li><a href="#teams">Teams</a></li>
@@ -54,7 +68,7 @@
           <h2>Teams &amp; Programmes</h2>
           <ul class="list list--check">
             <li>1st XI competing in North West Championship fixtures.</li>
-            <li>2nd & 3rd XIs providing a pathway for emerging senior players.</li>
+            <li>2nd &amp; 3rd XIs providing a pathway for emerging senior players.</li>
             <li>Youth teams at under-11, under-13, and under-15 levels.</li>
             <li>Girls and women&rsquo;s softball cricket initiatives each summer.</li>
             <li>"Smash It" (Ages 5-9) summer programme and community taster sessions for beginners.</li>
@@ -152,16 +166,16 @@
             </p>
             <ul class="list">
               <li>Email: <a href="mailto:ardmorecc@gmail.com">ardmorecc@gmail.com</a></li>
-              <li>Facebook: <a href="https://www.facebook.com/ardmorecricketclub" target="_blank" rel="noopener">@ardmorecricketclub</a></li>
-              <li>Instagram: <a href="https://www.instagram.com/ardmorecricketclub" target="_blank" rel="noopener">@ardmorecricketclub</a></li>
-              <li>Klubfunder: <a href="https://www.klubfunder.com/Clubs/Ardmore_Cricket_Club" target="_blank" rel="noopener">Ardmore Cricket Club</a></li>
+              <li>Facebook: <a href="https://www.facebook.com/ardmorecricketclub" target="_blank" rel="noopener noreferrer">@ardmorecricketclub</a></li>
+              <li>Instagram: <a href="https://www.instagram.com/ardmorecricketclub" target="_blank" rel="noopener noreferrer">@ardmorecricketclub</a></li>
+              <li>Klubfunder: <a href="https://www.klubfunder.com/Clubs/Ardmore_Cricket_Club" target="_blank" rel="noopener noreferrer">Ardmore Cricket Club</a></li>
             </ul>
           </div>
 
           <aside class="contact__images" aria-label="Team photos">
             <!-- replace filenames if different -->
-            <img src="assets/images/1stXIchampions.jpg" alt="Ardmore 1st XI" />
-            <img src="assets/images/2ndXIchampions.jpg" alt="Ardmore 2nd XI" />
+            <img src="assets/images/1stXIchampions.jpg" alt="Ardmore 1st XI" loading="lazy" decoding="async" />
+            <img src="assets/images/2ndXIchampions.jpg" alt="Ardmore 2nd XI" loading="lazy" decoding="async" />
           </aside>
         </div>
       </div>
@@ -175,33 +189,6 @@
     </div>
   </footer>
 
-  <script>
-    const navToggle = document.querySelector('.nav__toggle');
-    const navLinks = document.querySelector('.nav__links');
-
-    function toggleNav() {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('nav__links--open');
-    }
-
-    navToggle.addEventListener('click', toggleNav);
-
-    document.querySelectorAll('.nav__links a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navLinks.classList.remove('nav__links--open');
-      });
-    });
-
-    const year = document.getElementById('year');
-    if (year) year.textContent = new Date().getFullYear();
-  </script>
-  <script async src="https://www.instagram.com/embed.js"></script>
-  <script>
-    if (window.instgrm) {
-      window.instgrm.Embeds.process();
-    }
-  </script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
