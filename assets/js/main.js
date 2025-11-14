@@ -1,8 +1,14 @@
 // Accessible, mobile-first navigation + small UX helpers
 (function () {
+  const CLUB_EMAIL = window.CLUB_EMAIL || 'ardmorecc1879@hotmail.com';
   const body = document.body;
   const navToggle = document.querySelector('.nav__toggle');
   const menu = document.getElementById('nav-menu');
+
+  document.querySelectorAll('[data-club-email]').forEach((el) => {
+    el.textContent = CLUB_EMAIL;
+    el.setAttribute('href', 'mailto:' + CLUB_EMAIL);
+  });
 
   function isMobile() {
     return window.matchMedia('(max-width: 860px)').matches;
