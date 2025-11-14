@@ -1,5 +1,6 @@
 // Accessible, mobile-first navigation + small UX helpers
 (function () {
+  const body = document.body;
   const navToggle = document.querySelector('.nav__toggle');
   const menu = document.getElementById('nav-menu');
 
@@ -115,5 +116,69 @@
       } catch (_) {}
     };
     document.body.appendChild(fb);
+  }
+
+  // Lightbox for gallery images
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxTriggers = document.querySelectorAll('[data-lightbox-trigger]');
+
+  if (lightbox && lightboxImage && lightboxTriggers.length) {
+    const closeBtn = lightbox.querySelector('[data-lightbox-close]');
+    let lastTrigger = null;
+
+    const openLightbox = (trigger) => {
+      const img = trigger.querySelector('img');
+      const src = trigger.getAttribute('data-lightbox-src') || img?.currentSrc || img?.src;
+      if (!src) return;
+      const alt = trigger.getAttribute('data-lightbox-alt') || img?.alt || '';
+      const caption =
+        trigger.getAttribute('data-lightbox-caption') ||
+        trigger.closest('figure')?.querySelector('figcaption')?.innerText ||
+        '';
+
+      lastTrigger = trigger;
+      lightboxImage.src = src;
+      lightboxImage.alt = alt;
+      if (lightboxCaption) {
+        lightboxCaption.textContent = caption;
+        lightboxCaption.hidden = !caption;
+      }
+      lightbox.hidden = false;
+      body && body.classList.add('body--locked');
+      closeBtn?.focus();
+    };
+
+    const closeLightbox = () => {
+      if (lightbox.hidden) return;
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute('src');
+      lightboxImage.alt = '';
+      if (lightboxCaption) {
+        lightboxCaption.textContent = '';
+        lightboxCaption.hidden = false;
+      }
+      body && body.classList.remove('body--locked');
+      lastTrigger?.focus();
+      lastTrigger = null;
+    };
+
+    lightboxTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => openLightbox(trigger));
+    });
+
+    closeBtn?.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !lightbox.hidden) {
+        event.preventDefault();
+        closeLightbox();
+      }
+    });
   }
 })();
